@@ -19,7 +19,7 @@ public class Main extends Application {
 			scene.setFill(tarheelBlue);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			System.out.println("the app ran!");
+			System.out.println("this is a new message");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
