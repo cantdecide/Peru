@@ -19,7 +19,6 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			scene.setFill(tarheelBlue);
 			primaryStage.show();
-			System.out.println("this is a new message");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
