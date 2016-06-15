@@ -4,21 +4,16 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 
-public class Main extends Application {	
-	
-	Color tarheelBlue = new Color(0.482, 0.686, 0.831, 1);
-			
+
+public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,600,600);
+			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			scene.setFill(tarheelBlue);
-			System.out.println("Hello Peru");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
