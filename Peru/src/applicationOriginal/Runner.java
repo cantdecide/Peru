@@ -104,6 +104,7 @@ public class Runner extends Application {
     pronunciation.setOnAction(this::handleTesting);
     container.getChildren().add(pronunciation);
     Button nextWord = new Button("Next Word");
+    nextWord.setOnAction(this::handleNextWord);
     container.getChildren().add(nextWord);
     Scene scene = new Scene(container);
     firstStage.setScene(scene);
@@ -138,6 +139,25 @@ public class Runner extends Application {
   private void soundEnded() {
     _soundQueue.poll();
     this.playNextSound();
+  }
+  
+  private VBox setupVBox() {
+	    VBox container = new VBox(Runner.PADDING);
+	    container.setAlignment(Pos.CENTER);
+	    container.setPadding(new Insets(Runner.PADDING));
+	    return container;
+  }
+  
+  private void handleNextWord(ActionEvent e) {
+	  _stage.hide();
+	  Stage stage = new Stage();
+	  VBox container = this.setupVBox();
+	  
+	  // Word sun = new Word("sun", "inti", )
+	  
+	  _stage = stage;
+	  resize(_stage);
+	  _stage.show();
   }
 }
 // How do I make it so they can answer it?
