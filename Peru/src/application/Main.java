@@ -31,7 +31,7 @@ public class Main extends Application {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
+    // checking to see if this second pull will resolve things
   }
 
   public static void main(String[] args) {
