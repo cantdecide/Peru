@@ -25,7 +25,7 @@ public class Runner extends Application {
 
   private Queue<MediaPlayer>  _soundQueue = new LinkedList<MediaPlayer>();
 
-  private final static double PADDING     = 16.0;
+  private final static double PADDING     = 150.0;
 
   public static void main(String[] args) {
     Application.launch();
@@ -36,7 +36,6 @@ public class Runner extends Application {
     _stage.setTitle("Learn Quechua!");
     // how do i make the label always show?
     // _scene = this.initScene();
-
     _stage.show();
     this.newGame();
   }
@@ -47,7 +46,7 @@ public class Runner extends Application {
 
   private void newGame() {
     _stage.setScene(this.inItScene());
-
+    _stage.centerOnScreen();
   }
 
   private Scene inItScene() {
