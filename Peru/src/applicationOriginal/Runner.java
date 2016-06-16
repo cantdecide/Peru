@@ -7,6 +7,7 @@ import java.util.Queue;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +26,7 @@ public class Runner extends Application {
 
   private Queue<MediaPlayer>  _soundQueue = new LinkedList<MediaPlayer>();
 
-  private final static double PADDING     = 150.0;
+  private final static double PADDING     = 16.0;
 
   public static void main(String[] args) {
     Application.launch();
@@ -45,13 +46,15 @@ public class Runner extends Application {
   // }
 
   private void newGame() {
-    _stage.setScene(this.inItScene());
+	resize(_stage);
     _stage.centerOnScreen();
+    _stage.setScene(this.inItScene());
   }
 
   private Scene inItScene() {
 
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
     Label appLabel = new Label("Learn Quechua");
     Button begin = new Button("start");
@@ -62,12 +65,18 @@ public class Runner extends Application {
     return new Scene(container);
 
   }
+  
+  private void resize(Stage stage) {
+    stage.setHeight(400);
+    stage.setWidth(500);
+  }
 
   private void handleStartButtonClicked(ActionEvent event) {
     _stage.hide();
     Stage firstStage = new Stage();
 
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
 
     Label prompt = new Label("How do you say 'Do you need help?' in Quechua?");
@@ -79,13 +88,16 @@ public class Runner extends Application {
     Scene scene = new Scene(container);
     firstStage.setScene(scene);
     _stage = firstStage;
+    resize(_stage);
     _stage.show();
   }
 
   private void handleAnswer1(ActionEvent event) {
     _stage.hide();
     Stage firstStage = new Stage();
+    resize(firstStage);
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
     Label prompt = new Label("Munanki anapanayta?");
     container.getChildren().add(prompt);
