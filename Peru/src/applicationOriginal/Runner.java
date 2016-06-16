@@ -95,7 +95,6 @@ public class Runner extends Application {
   private void handleAnswer1(ActionEvent event) {
     _stage.hide();
     Stage firstStage = new Stage();
-    resize(firstStage);
     VBox container = new VBox(Runner.PADDING);
     container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
@@ -109,7 +108,8 @@ public class Runner extends Application {
     Scene scene = new Scene(container);
     firstStage.setScene(scene);
     _stage = firstStage;
-    _stage.show();
+    resize(_stage);
+    _stage.show();    
   }
 
   private void handleTesting(ActionEvent e) {
