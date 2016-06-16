@@ -7,6 +7,7 @@ import java.util.Queue;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +37,6 @@ public class Runner extends Application {
     _stage.setTitle("Learn Quechua!");
     // how do i make the label always show?
     // _scene = this.initScene();
-
     _stage.show();
     this.newGame();
   }
@@ -46,13 +46,15 @@ public class Runner extends Application {
   // }
 
   private void newGame() {
+	resize(_stage);
+    _stage.centerOnScreen();
     _stage.setScene(this.inItScene());
-
   }
 
   private Scene inItScene() {
 
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
     Label appLabel = new Label("Learn Quechua");
     Button begin = new Button("start");
@@ -63,12 +65,18 @@ public class Runner extends Application {
     return new Scene(container);
 
   }
+  
+  private void resize(Stage stage) {
+    stage.setHeight(400);
+    stage.setWidth(500);
+  }
 
   private void handleStartButtonClicked(ActionEvent event) {
     _stage.hide();
     Stage firstStage = new Stage();
 
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
 
     Label prompt = new Label("How do you say 'Do you need help?' in Quechua?");
@@ -80,6 +88,7 @@ public class Runner extends Application {
     Scene scene = new Scene(container);
     firstStage.setScene(scene);
     _stage = firstStage;
+    resize(_stage);
     _stage.show();
   }
 
@@ -87,6 +96,7 @@ public class Runner extends Application {
     _stage.hide();
     Stage firstStage = new Stage();
     VBox container = new VBox(Runner.PADDING);
+    container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(Runner.PADDING));
     Label prompt = new Label("Munanki anapanayta?");
     container.getChildren().add(prompt);
@@ -98,7 +108,8 @@ public class Runner extends Application {
     Scene scene = new Scene(container);
     firstStage.setScene(scene);
     _stage = firstStage;
-    _stage.show();
+    resize(_stage);
+    _stage.show();    
   }
 
   private void handleTesting(ActionEvent e) {
