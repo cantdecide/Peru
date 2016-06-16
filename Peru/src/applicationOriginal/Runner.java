@@ -9,8 +9,13 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -23,6 +28,8 @@ public class Runner extends Application {
   private Label               _label;
   private Game                _game;
   private Scene               _scene;
+  private TextField 		  _textfield;
+  private Word				  _word;
 
   private Queue<MediaPlayer>  _soundQueue = new LinkedList<MediaPlayer>();
 
@@ -153,12 +160,40 @@ public class Runner extends Application {
 	  Stage stage = new Stage();
 	  VBox container = this.setupVBox();
 	  
-	  // Word sun = new Word("sun", "inti", )
+	  Word sun = new Word("sun", "inti", "sun.png", "Testing.m4a");
+	  _word = sun;
+	  ImageView sunView = new ImageView(sun.getImage());
+	  sunView.setFitWidth(200);
+	  sunView.setFitHeight(200);
 	  
+	  Label label = new Label("Type the Quechua word: ");
+	  Button check = new Button("Check");
+	  TextField textfield = new TextField();
+	  textfield.setMaxWidth(200);
+	  _textfield = textfield;
+	  check.setOnAction(this::handleCheck);
+	  
+	  container.getChildren().addAll(sunView, label, _textfield, check);
+	  Scene scene = new Scene(container);
+	  stage.setScene(scene);
 	  _stage = stage;
 	  resize(_stage);
 	  _stage.show();
   }
+  
+  private void handleCheck(ActionEvent e) {
+	  String userInput = new String(_textfield.getText());
+	  if (userInput.equals(_word.getQuechua())) {
+		  Alert alert = new Alert(AlertType.INFORMATION);
+		  alert.setHeaderText("Correct!");
+		  alert.showAndWait();
+	  } else {
+		  Alert alert = new Alert(AlertType.ERROR);
+		  alert.setHeaderText("Sorry, try again!");
+		  alert.showAndWait();
+	  }
+  }
+  
 }
 // How do I make it so they can answer it?
 // Do I need to set the order that the words come in?
