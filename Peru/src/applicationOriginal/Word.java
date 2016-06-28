@@ -20,6 +20,46 @@ public class Word {
 	    Media media = new Media(resource.toString());
 	    _sound = media;
 	}
-	
-	
+	public void setEnglish(String english) {
+		_english = english;
 }
+
+	public void setQuechua(String quechua) {
+		_quechua = quechua;
+}
+
+	public void setImage(Image image) {
+		_image = image;
+}
+
+	public void setSound(String filename) {
+		  URL resource = this.getClass().getResource("sounds/" + filename);
+	    Media media = new Media(resource.toString());
+	    _sound = media;
+		
+}
+
+
+	public String getEnglish() {
+	return _english;
+}
+
+	public String getQuechua() {
+	return _quechua;
+}
+
+	public Image getImage() {
+	return _image;
+}
+
+	public Media getSound() {
+	return _sound;
+}
+
+}
+
+
+}
+
+	
+
