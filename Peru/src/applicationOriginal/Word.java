@@ -13,7 +13,7 @@ public class Word {
 	private Media _sound;
 	private int _spacedRepetition;
 	
-	Word(String english, String quechua, Image image, String filename, int _spacedRepetition) {
+	Word(String english, String quechua, Image image, String filename) {
 		_english = english;
 		_quechua = quechua;
 		_image = image;
